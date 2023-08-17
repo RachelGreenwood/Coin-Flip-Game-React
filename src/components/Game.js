@@ -1,4 +1,6 @@
 export default function Game(props) {
+  const [number, setNumber] = useState('');
+
   function coinFlip() {
     let flip = Math.random();
     if (flip < 0.5) {
@@ -24,7 +26,7 @@ export default function Game(props) {
   return (
     <div>
       <p>How many coins do you want to flip?</p>
-      <input type="number" />
+      <input type="number" value={number} />
       <button onClick={(e) => handleClick()}>Flip</button>
       <p>{props.coins}</p>
     </div>
