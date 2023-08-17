@@ -8,23 +8,25 @@ export default function Game(props) {
     }
   }
 
+  function handleClick() {
+    let coinNum = input.value;
+    if (coinNum > 0) {
+      let coinStack = [];
+      for (let i = 0; i < coinNum; i++) {
+        coinStack.push(coinFlip())
+      }
+      text.innerText = coinStack.join(", ");
+    } else {
+      text.innerText = "Please enter a valid number";
+    }
+  }
+
   return (
     <div>
       <p>How many coins do you want to flip?</p>
       <input type="number" />
-      <button onClick={(e) => coinFlip()}>Flip</button>
+      <button onClick={(e) => handleClick()}>Flip</button>
       <p>{props.coins}</p>
     </div>
   );
 }
-
-// if (coinNum > 0) {
-//   let coinStack = [];
-//   for (let i = 0; i < coinNum; i++) {
-//       coinStack.push(coinFlip())
-//   }
-//   text.innerText = coinStack.join(", ");
-//   console.log(coinFlip());
-// } else {
-//   text.innerText = "Please enter a valid number";
-// }
