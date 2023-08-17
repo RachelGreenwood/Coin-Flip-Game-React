@@ -1,5 +1,7 @@
+import { useState } from "react";
+
 export default function Game(props) {
-  const [number, setNumber] = useState('');
+  const [coins, setCoins] = useState('');
 
   function coinFlip() {
     let flip = Math.random();
@@ -17,18 +19,18 @@ export default function Game(props) {
       for (let i = 0; i < coinNum; i++) {
         coinStack.push(coinFlip())
       }
-      text.innerText = coinStack.join(", ");
+      setCoins(coinStack.join(", "));
     } else {
-      text.innerText = "Please enter a valid number";
+      setCoins("Please enter a valid number");
     }
   }
 
   return (
     <div>
       <p>How many coins do you want to flip?</p>
-      <input type="number" value={number} />
+      <input id="input" type="number" />
       <button onClick={(e) => handleClick()}>Flip</button>
-      <p>{props.coins}</p>
+      <p>{coins}</p>
     </div>
   );
 }
