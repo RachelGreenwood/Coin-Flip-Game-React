@@ -1,7 +1,5 @@
-import { useState } from "react";
-
 export default function Game(props) {
-  const [coins, setCoins] = useState('');
+  const { coins, setCoins } = props;
 
   function coinFlip() {
     let flip = Math.random();
@@ -17,7 +15,7 @@ export default function Game(props) {
     if (coinNum > 0) {
       let coinStack = [];
       for (let i = 0; i < coinNum; i++) {
-        coinStack.push(coinFlip())
+        coinStack.push(coinFlip());
       }
       setCoins(coinStack.join(", "));
     } else {
