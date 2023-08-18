@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 export default function Game(props) {
+  const [coins, setCoins] = useState('');
+
   function coinFlip() {
     let flip = Math.random();
     if (flip < 0.5) {
@@ -8,23 +12,25 @@ export default function Game(props) {
     }
   }
 
+  function handleClick() {
+    let coinNum = input.value;
+    if (coinNum > 0) {
+      let coinStack = [];
+      for (let i = 0; i < coinNum; i++) {
+        coinStack.push(coinFlip())
+      }
+      setCoins(coinStack.join(", "));
+    } else {
+      setCoins("Please enter a valid number");
+    }
+  }
+
   return (
     <div>
       <p>How many coins do you want to flip?</p>
-      <input type="number" />
-      <button onClick={(e) => coinFlip()}>Flip</button>
-      <p>{props.coins}</p>
+      <input id="input" type="number" />
+      <button onClick={(e) => handleClick()}>Flip</button>
+      <p>{coins}</p>
     </div>
   );
 }
-
-// if (coinNum > 0) {
-//   let coinStack = [];
-//   for (let i = 0; i < coinNum; i++) {
-//       coinStack.push(coinFlip())
-//   }
-//   text.innerText = coinStack.join(", ");
-//   console.log(coinFlip());
-// } else {
-//   text.innerText = "Please enter a valid number";
-// }
