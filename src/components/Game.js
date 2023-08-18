@@ -1,5 +1,5 @@
 export default function Game(props) {
-  const { coins, setCoins } = props;
+  const { coins, setCoins, count, setCount } = props;
 
   function coinFlip() {
     let flip = Math.random();
@@ -21,14 +21,20 @@ export default function Game(props) {
     } else {
       setCoins("Please enter a valid number");
     }
+    increment();
   }
 
-  return (
-    <div>
-      <p>How many coins do you want to flip?</p>
-      <input id="input" type="number" />
-      <button onClick={(e) => handleClick()}>Flip</button>
-      <p>{coins}</p>
-    </div>
-  );
+  function increment() {
+    setCount(count + coins);
+
+    return (
+      <div>
+        <p>How many coins do you want to flip?</p>
+        <input id="input" type="number" />
+        <button onClick={(e) => handleClick()}>Flip</button>
+        <p>{coins}</p>
+        <p> Coins Flipped: {count}</p>
+      </div>
+    );
+  }
 }

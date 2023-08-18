@@ -1,6 +1,5 @@
 import "./styles.css";
 import Game from "./components/Game";
-import Counter from "./components/Counter";
 import { useState } from "react";
 
 export default function App() {
@@ -9,8 +8,12 @@ export default function App() {
 
   return (
     <div className="App">
-      <Game coins={coins} setCoins={setCoins} />
-      <Counter count={count} setCount={setCount} input={coins} />
+      <Game
+        coins={coins}
+        setCoins={setCoins}
+        count={count}
+        setCount={setCount}
+      />
     </div>
   );
 }
