@@ -26,7 +26,7 @@ export default function Game(props) {
 
   return (
     <div>
-      <p>How many coins do you want to flip?</p>
+      <p className="header">How many coins do you want to flip?</p>
       <input id="input" type="number" />
       <button onClick={(e) => handleClick()}>Flip</button>
       <p>{coins}</p>
